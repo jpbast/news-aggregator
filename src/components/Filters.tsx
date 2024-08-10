@@ -27,6 +27,9 @@ const Filters: React.FC<FiltersProps> = ({ filters, setFilters }) => {
         <div className="flex gap-3 items-center flex-wrap max-[668px]:w-full">
           <div className="flex-1">
             <DateInput
+              // News API free account does not return any article older than 1 months
+              minDate={dayjs().subtract(1, "months").toDate()}
+              maxDate={filters.dates.to}
               label="Start date"
               selectedDate={filters.dates.from}
               onChange={(date) =>
@@ -45,6 +48,8 @@ const Filters: React.FC<FiltersProps> = ({ filters, setFilters }) => {
           </div>
           <div className="flex-1">
             <DateInput
+              maxDate={new Date()}
+              minDate={filters.dates.from}
               label="End date"
               selectedDate={filters.dates.to}
               onChange={(date) =>

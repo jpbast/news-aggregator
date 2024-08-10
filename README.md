@@ -31,6 +31,14 @@ The app is a fully responsive single-page application that displays news from va
 
 To enhance performance and user experience, infinite scrolling has been implemented. More news will load as the user scrolls down the page.
 
+## Limitations
+
+Due to the restrictions of the free API accounts, there are a few limitations in the app:
+
+- Article Age: You cannot retrieve articles older than one month. As a result, the Start Date filter is limited to dates from no more than one month ago.
+
+- Pagination: The pagination is limited, so even with infinite scrolling, you may not be able to load a large number of articles. This is due to the constraints imposed by the APIs.
+
 ## Data Handling
 
 All news articles are retrieved from three different APIs:

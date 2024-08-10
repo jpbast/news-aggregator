@@ -8,7 +8,7 @@ import { NewsApiResponse } from "@/types/newsApi";
 import dayjs from "dayjs";
 
 const PAGE_SIZE = 10;
-const PAGINATION_LIMIT = 5;
+const PAGINATION_LIMIT = 8;
 
 function getFetchFuncBySource<T>(
   apiSource: ApiSource,

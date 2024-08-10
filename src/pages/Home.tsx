@@ -36,7 +36,11 @@ const Home: React.FC = () => {
           ) : (
             <>
               {news.map((n, index) => (
-                <NewsCard key={n.id} news={n} index={index} />
+                <NewsCard
+                  key={n.id}
+                  news={n}
+                  index={Math.floor(index / news.length)}
+                />
               ))}
               <div ref={ref} />
             </>

@@ -91,8 +91,9 @@ export default function useNews({ filters, inView }: Args) {
       const nyt = nytData.pages.map((data) =>
         data.response.docs.map((doc) => {
           const thumbnail = doc.multimedia.find(
-            (media) => media.subType === "thumbnail"
+            (media) => media.subType === "articleLarge"
           );
+          console.log("multi", doc.multimedia);
 
           return {
             id: doc._id,
@@ -100,7 +101,9 @@ export default function useNews({ filters, inView }: Args) {
             publishedAt: doc.pub_date,
             title: doc.headline.main,
             url: doc.web_url,
-            thumbnail: thumbnail?.url || doc.multimedia?.[0]?.url,
+            thumbnail: thumbnail?.url
+              ? `https://static01.nyt.com/${thumbnail?.url}`
+              : `https://static01.nyt.com/${doc.multimedia?.[0]?.url}`,
             categoryId: doc.news_desk,
             categoryName: doc.news_desk,
             description: doc.lead_paragraph,
