@@ -1,8 +1,6 @@
 import React from "react";
 
-type NewsSkeletonProps = {};
-
-const NewsSkeleton: React.FC<NewsSkeletonProps> = () => {
+const NewsSkeleton: React.FC = () => {
   return (
     <>
       {Array(30)
