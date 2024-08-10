@@ -36,13 +36,16 @@ const Home: React.FC = () => {
           ) : (
             <>
               {news.map((n, index) => (
-                <NewsCard
-                  key={n.id}
-                  news={n}
-                  index={Math.floor(index / news.length)}
-                />
+                <>
+                  <NewsCard
+                    key={n.id}
+                    news={n}
+                    index={Math.floor(index / news.length)}
+                  />
+                  {/* Get new articles before reaching the scrolling end */}
+                  {index === news.length - 5 && <div ref={ref} />}
+                </>
               ))}
-              <div ref={ref} />
             </>
           )}
         </div>

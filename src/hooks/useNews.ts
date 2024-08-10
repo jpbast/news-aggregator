@@ -93,7 +93,8 @@ export default function useNews({ filters, inView }: Args) {
           const thumbnail = doc.multimedia.find(
             (media) => media.subType === "articleLarge"
           );
-          console.log("multi", doc.multimedia);
+
+          const img = thumbnail?.url || doc.multimedia?.[0]?.url;
 
           return {
             id: doc._id,
@@ -101,9 +102,7 @@ export default function useNews({ filters, inView }: Args) {
             publishedAt: doc.pub_date,
             title: doc.headline.main,
             url: doc.web_url,
-            thumbnail: thumbnail?.url
-              ? `https://static01.nyt.com/${thumbnail?.url}`
-              : `https://static01.nyt.com/${doc.multimedia?.[0]?.url}`,
+            thumbnail: img ? `https://static01.nyt.com/${img}` : undefined,
             categoryId: doc.news_desk,
             categoryName: doc.news_desk,
             description: doc.lead_paragraph,
