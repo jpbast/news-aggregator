@@ -1,5 +1,5 @@
 <p>
-  <img style="flex:1" src="https://res.cloudinary.com/jpbast/image/upload/v1723323584/Personal/a84cff0c-0ca5-4b9d-a52c-d2f43e303070.png" />
+  <img style="flex:1" src="https://res.cloudinary.com/jpbast/image/upload/v1723332329/Personal/67da1ab6-0d8e-418c-8f9f-14780e3df802.png" />
 </p>
 
 # News Aggregator
