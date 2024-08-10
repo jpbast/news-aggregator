@@ -40,10 +40,12 @@ const Home: React.FC = () => {
                   <NewsCard
                     key={n.id}
                     news={n}
-                    index={Math.floor(index / news.length)}
+                    index={(index / news.length) * 10}
                   />
                   {/* Get new articles before reaching the scrolling end */}
-                  {index === news.length - 5 && <div ref={ref} />}
+                  {index === news.length - 5 && (
+                    <div className="hidden" ref={ref} />
+                  )}
                 </>
               ))}
             </>

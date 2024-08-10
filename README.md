@@ -39,6 +39,8 @@ Due to the restrictions of the free API accounts, there are a few limitations in
 
 - Pagination: The pagination is limited, so even with infinite scrolling, you may not be able to load a large number of articles. This is due to the constraints imposed by the APIs.
 
+- Requests limits: If you visit the online app, keep in mind that it's using free API tokens. So depending on the amount of users visiting it, maybe some requests will reach their limits really soon.
+
 ## Data Handling
 
 All news articles are retrieved from three different APIs:

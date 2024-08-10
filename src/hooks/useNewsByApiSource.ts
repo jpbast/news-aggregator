@@ -7,7 +7,7 @@ import { GuardianApiResponse } from "@/types/guardianApi";
 import { NewsApiResponse } from "@/types/newsApi";
 import dayjs from "dayjs";
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 const PAGINATION_LIMIT = 8;
 
 function getFetchFuncBySource<T>(
@@ -41,7 +41,9 @@ function getFetchFuncBySource<T>(
             categoriesFilter ? `&section=${categoriesFilter}` : ""
           }${keywordFilter}&from-date=${dayjs(fromDate).format(
             "YYYY-MM-DD"
-          )}&to-date=${dayjs(toDate).format("YYYY-MM-DD")}`
+          )}&to-date=${dayjs(toDate).format(
+            "YYYY-MM-DD"
+          )}&page-size=${PAGE_SIZE}`
         );
 
         return data;

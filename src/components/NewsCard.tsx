@@ -20,6 +20,8 @@ const NewsCard: React.FC<NewsCardProps> = ({ news, index }) => {
     setAnimate(true);
   }, []);
 
+  console.log("index", index);
+
   return (
     <div
       className={`rounded-lg shadow-lg flex flex-col gap-3 overflow-hidden bg-gray-100 transition duration-1000 opacity-0 ${
