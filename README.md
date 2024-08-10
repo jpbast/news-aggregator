@@ -4,7 +4,7 @@
 
 # News Aggregator
 
-You can visit it here
+For checking the online version you can click [here](https://news-aggregator-jpbast.vercel.app/).
 
 ## How to run the project
 

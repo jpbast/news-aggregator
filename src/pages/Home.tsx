@@ -19,11 +19,7 @@ const Home: React.FC = () => {
 
   const [ref, inView] = useInView({ triggerOnce: false });
 
-  const {
-    data: news,
-    isLoading,
-    isFetchingNextPage,
-  } = useNews({ filters, inView });
+  const { data: news, isLoading } = useNews({ filters, inView });
 
   return (
     <div className="flex flex-col gap-4 relative">
@@ -43,7 +39,6 @@ const Home: React.FC = () => {
                 <NewsCard key={n.id} news={n} index={index} />
               ))}
               <div ref={ref} />
-              {isFetchingNextPage && <NewsSkeleton />}
             </>
           )}
         </div>
