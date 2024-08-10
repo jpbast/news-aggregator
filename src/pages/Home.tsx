@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Filter } from "@/types/filters";
 import NewsCard from "@/components/NewsCard";
@@ -17,9 +17,26 @@ const Home: React.FC = () => {
     },
   } as Filter);
 
+  const animation = useRef(true);
+
   const [ref, inView] = useInView({ triggerOnce: false });
 
-  const { data: news, isLoading } = useNews({ filters, inView });
+  const {
+    data: news,
+    isLoading,
+    isFetchingNextPage,
+  } = useNews({ filters, inView });
+
+  useEffect(() => {
+    // Disable opacity animation for articles coming after infinite scrolling
+    if (isLoading) {
+      animation.current = true;
+    }
+
+    if (isFetchingNextPage) {
+      animation.current = false;
+    }
+  }, [isFetchingNextPage, isLoading]);
 
   return (
     <div className="flex flex-col gap-4 relative">
@@ -37,15 +54,14 @@ const Home: React.FC = () => {
             <>
               {news.map((n, index) => (
                 <>
-                  <NewsCard
-                    key={n.id}
-                    news={n}
-                    index={(index / news.length) * 10}
-                  />
-                  {/* Get new articles before reaching the scrolling end */}
-                  {index === news.length - 5 && (
-                    <div className="hidden" ref={ref} />
-                  )}
+                  <div ref={index === news.length - 5 ? ref : undefined}>
+                    <NewsCard
+                      key={n.id}
+                      news={n}
+                      index={index}
+                      animation={animation.current}
+                    />
+                  </div>
                 </>
               ))}
             </>

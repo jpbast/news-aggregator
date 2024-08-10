@@ -6,10 +6,11 @@ import { IoChevronForwardCircleOutline } from "react-icons/io5";
 type NewsCardProps = {
   news: News;
   index: number;
+  animation: boolean;
 };
 
-const NewsCard: React.FC<NewsCardProps> = ({ news, index }) => {
-  const [animate, setAnimate] = useState(false);
+const NewsCard: React.FC<NewsCardProps> = ({ news, index, animation }) => {
+  const [animate, setAnimate] = useState(!animation);
 
   const thumbnail =
     news.thumbnail && news.thumbnail.startsWith("https://")
@@ -19,8 +20,6 @@ const NewsCard: React.FC<NewsCardProps> = ({ news, index }) => {
   useEffect(() => {
     setAnimate(true);
   }, []);
-
-  console.log("index", index);
 
   return (
     <div
